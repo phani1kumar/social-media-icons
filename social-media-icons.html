@@ -79,14 +79,14 @@ A Polymer element with a set of scalable social media icons
 				},
 
 				/**
-				 * The `viewBoxSize` attribute sets a viewBox of values "0 0 [[viewBoxSize]] [[viewBoxSize]]" of an element
+				 * The `viewBoxSize` shall be of the form "0 0 24 24", this will be set as viewBox of values "0 0 24 24" of the element
 				 *
 				 * @attribute viewBoxSize
-				 * @type int
-				 * @default 32
+				 * @type string
+				 * @default "0 0 32 32"
 				 */
 				viewBoxSize: {
-					type: Number,
+					type: String,
 					notify: true,
 					observer: 'setViewBoxSize'
 				},
@@ -123,7 +123,7 @@ A Polymer element with a set of scalable social media icons
 				return 'width: ' + size + 'px; height: ' + size + 'px;';
 			},
 			setViewBoxSize: function(viewSize) {
-				this.root.querySelector('svg').setAttribute('viewBox','0 0 '+viewSize+' '+viewSize);
+				this.root.querySelector('svg').setAttribute('viewBox',viewSize);
 			},
 			_setTitle: function(icon) {
 				return capitalizeFirstLetter(icon) + ' Logo';
